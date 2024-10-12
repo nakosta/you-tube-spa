@@ -1,7 +1,7 @@
 import React from "react";
 
 const Boolean = ({ boolean }) => {
-  return <>{boolean ? "true" : "false"}</>;
+  return <div>{boolean ? "true" : "false"}</div>;
 };
 
 export default Boolean;

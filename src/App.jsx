@@ -14,14 +14,14 @@ const App = () => {
   const funAF = () => "i am AF!";
   const array = [1, 2, 3];
   return (
-    <>
+    <div>
       <Number number={number} />
       <String string={string} />
       <Boolean boolean={boolean} />
       <Object object={object} />
       <FunAF funAF={funAF} />
       <Array array={array} />
-    </>
+    </div>
   );
 };
 

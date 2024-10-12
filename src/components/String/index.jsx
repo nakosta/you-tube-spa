@@ -1,7 +1,7 @@
 import React from "react";
 
 const String = ({ string }) => {
-  return <>{string.toUpperCase()}</>;
+  return <div>{string.toUpperCase()}</div>;
 };
 
 export default String;

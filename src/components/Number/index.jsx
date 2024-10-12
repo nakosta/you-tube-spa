@@ -1,7 +1,7 @@
 import React from "react";
 
 const Number = ({ number }) => {
-  return <>{number / 2}</>;
+  return <div>{number / 2}</div>;
 };
 
 export default Number;

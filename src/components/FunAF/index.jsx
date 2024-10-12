@@ -1,7 +1,7 @@
 import React from "react";
 
 const FunAF = ({ funAF }) => {
-  return <>{funAF().toUpperCase()}</>;
+  return <div>{funAF().toUpperCase()}</div>;
 };
 
 export default FunAF;
