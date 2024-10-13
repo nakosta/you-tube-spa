@@ -18,7 +18,7 @@ const ParentComponent = () => {
   };
 
   const decrement = () => {
-    counter > 0 ? setСounter((counter) => counter - 1) : counter;
+    counter > 0 && setСounter((counter) => counter - 1);
   };
 
   return (
