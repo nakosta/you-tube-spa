@@ -12,7 +12,7 @@ const ShouldComponentUpdate = React.memo(({ count }) => {
 });
 
 
-const LifecycleComponent = () => {
+const LifecycleComponent1 = () => {
   const [count, setCount] = useState(0);
 
    // componentDidMount
@@ -93,4 +93,4 @@ const LifecycleComponent = () => {
   );
 };
 
-export default LifecycleComponent;
+export default LifecycleComponent1;

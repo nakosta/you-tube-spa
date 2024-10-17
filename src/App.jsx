@@ -1,10 +1,10 @@
 import React from "react";
-import LifecycleComponent from "./components/LifecycleComponent";
+import LifecycleComponent2 from "./components/LifecycleComponent2";
 
 const App = () => {
   return (
     <div>
-      <LifecycleComponent />
+      <LifecycleComponent2 />
     </div>
   );
 };
