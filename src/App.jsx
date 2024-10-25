@@ -1,33 +1,35 @@
-import React, { useState, useRef } from "react";
-import List from "./components/List";
+import React, { useState, useCallback } from "react";
+import SearchInput from "./components/SearchInput";
+import ItemList from "./components/ItemList";
+import CounterButton from "./components/CounterButton";
 
 const App = () => {
-  const [arr, setArr] = useState(["kostya", "tanya", "pasha", "masha"]);
+  const arr = [
+    { name: "Kostya", id: 1 },
+    { name: "Tanya", id: 2 },
+    { name: "Pasha", id: 3 },
+    { name: "Masha", id: 4 },
+  ];
+
+  const [count, setCount] = useState(0);
+
+  // Меморизация функции обновления счетчика
+  const incrementCount = useCallback(() => {
+    setCount((prevCount) => prevCount + 1);
+  }, []);
+
   const [inputValue, setInputValue] = useState("");
-  const ref = useRef(null);
 
-  const focus = () => {
-    ref.current.focus();
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter" && inputValue.trim()) {
-      // Добавляем новое значение в массив
-      setArr((prevArr) => [...prevArr, inputValue]);
-      setInputValue(""); // Очищаем поле ввода
-    }
-  };
+  // Меморизация функции обновления текста
+  const updateInputValue = useCallback((value) => {
+    setInputValue(value);
+  }, []);
 
   return (
     <>
-      <input
-        ref={ref}
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
-      <button onClick={focus}>Фокус</button>
-      <List arr={arr} />
+      <CounterButton count={count} incrementCount={incrementCount} />
+      <SearchInput inputValue={inputValue} updateInputValue={updateInputValue} />
+      <ItemList inputValue={inputValue} arr={arr} />
     </>
   );
 };
