@@ -13,14 +13,12 @@ const App = () => {
 
   const [count, setCount] = useState(0);
 
-  // Меморизация функции обновления счетчика
   const incrementCount = useCallback(() => {
     setCount((prevCount) => prevCount + 1);
   }, []);
 
   const [inputValue, setInputValue] = useState("");
 
-  // Меморизация функции обновления текста
   const updateInputValue = useCallback((value) => {
     setInputValue(value);
   }, []);
