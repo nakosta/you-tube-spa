@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchInput = ({ inputValue, updateInputValue }) => {
+const SearchInput = React.memo(({ inputValue, updateInputValue }) => {
   console.log("SearchInput");
   return (
     <>
@@ -11,6 +11,6 @@ const SearchInput = ({ inputValue, updateInputValue }) => {
       />
     </>
   );
-};
+});
 
 export default SearchInput;

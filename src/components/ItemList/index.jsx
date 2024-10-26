@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-const ItemList = ({ inputValue, arr }) => {
+const ItemList = React.memo(({ inputValue, arr }) => {
   console.log("ItemList");
   const filteredArr = useMemo(() => {
     return arr.filter((item) =>
@@ -11,6 +11,6 @@ const ItemList = ({ inputValue, arr }) => {
   const arrItems = filteredArr.map(({ id, name }) => <li key={id}>{name}</li>);
 
   return <ol>{arrItems}</ol>;
-};
+});
 
 export default ItemList;

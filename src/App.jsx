@@ -4,6 +4,8 @@ import ItemList from "./components/ItemList";
 import CounterButton from "./components/CounterButton";
 
 const App = () => {
+  console.log("App");
+
   const arr = [
     { name: "Kostya", id: 1 },
     { name: "Tanya", id: 2 },
