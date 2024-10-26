@@ -1,6 +1,7 @@
 import React from "react";
 
 const SearchInput = ({ inputValue, updateInputValue }) => {
+  console.log("SearchInput");
   return (
     <>
       <input
