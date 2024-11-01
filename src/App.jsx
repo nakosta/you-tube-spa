@@ -1,14 +1,9 @@
 import React from "react";
-import { ThemeProvider } from "./ThemeContext";
-import ThemeToggle from "./components/ThemeToggle";
-import ThemedComponent from "./components/ThemedComponent";
+import RegistrationForm from "./components/RegistrationForm";
 
 const App = () => {
   return (
-    <ThemeProvider>
-      <ThemeToggle />
-      <ThemedComponent />
-    </ThemeProvider>
+    <RegistrationForm />
   );
 };
 
