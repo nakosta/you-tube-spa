@@ -1,25 +1,18 @@
 import { Typography, Image } from "antd";
+import styles from '../index.module.css';
 
 const { Text, Title, Paragraph } = Typography;
-
-const redTextStyle = {
-  backgroundColor: "#e5e3e3",
-  color: "#f5222d",
-  padding: "3px 6px",
-  fontWeight: "bold",
-  borderRadius: "5px",
-};
 
 const Components = () => {
   return (
     <>
       <Image
-        width={70}
+        className={styles.iconTop}
         src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f9ca.svg"
       />
       <Title>Components</Title>
       <Paragraph>
-        <Text style={redTextStyle}>Компоненты</Text> - это небольшие,
+        <Text className={styles.redTextStyle}>Компоненты</Text> - это небольшие,
         <Text strong> переиспользуемые элементы</Text> пользовательского
         интерфейса, которые объединены вместе, чтобы создать более крупные
         приложения.

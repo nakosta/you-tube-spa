@@ -1,78 +1,27 @@
-import { useEffect } from "react";
-import { Layout, Menu, Image, Typography } from "antd";
-import { Route, Routes, Link } from "react-router-dom";
-import Components from "./components/Components";
-import Props from "./components/Props";
-import ReactLogoLight from "./assets/img/logo_light.svg";
+import { Layout, Divider } from "antd";
+import ContentSite from "./components/ContentSite";
+import HeaderSite from "./components/HeaderSite";
+import MenuSite from "./components/MenuSite";
+import styles from "./index.module.css";
 
-const { Header, Footer, Sider, Content } = Layout;
-
-const { Text, Title, Paragraph } = Typography;
-
-const headerStyle = {
-  padding: "50px",
-  backgroundColor: "white",
-  display: "flex",
-  alignItems: "center",
-};
-const titleContainerStyle = {
-  flex: 1,
-  display: "flex",
-  justifyContent: "center",
-};
-const contentStyle = {
-  padding: "20px",
-};
-const siderStyle = {
-  textAlign: "center",
-  color: "white",
-};
-const footerStyle = {
-  textAlign: "center",
-  padding: "10px",
-};
-const layoutStyle = {
-  minHeight: "100vh",
-};
+const { Footer, Sider } = Layout;
 
 const App = () => {
-  useEffect(() => {
-    document.body.style.margin = "0"; // Убираем стандартный отступ body
-  }, []);
   return (
-    <Layout style={layoutStyle}>
-      <Header style={headerStyle}>
-        <Image width={60} src={ReactLogoLight} />
-        <div style={titleContainerStyle}>
-          <Title level={2}>Основная теория по библиотеке React</Title>
-        </div>
-      </Header>
-
+    <Layout className={styles.layout}>
+      <HeaderSite />
+      <Divider className={styles.divider} />
       <Layout>
-        <Sider width="25%" style={siderStyle}>
-          <Menu mode="inline" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <Link to="/components">Components</Link>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Link to="/props">Props</Link>
-            </Menu.Item>
-          </Menu>
+        <Sider className={styles.sider} width="20%">
+          <MenuSite />
         </Sider>
-
-        <Content style={contentStyle}>
-          <Routes>
-            <Route path="/components" element={<Components />} />
-            <Route path="/props" element={<Props />} />
-          </Routes>
-        </Content>
-
-        <Sider width="15%" style={siderStyle}>
-          Sider
-        </Sider>
+        <ContentSite />
+        <Sider className={styles.sider} width="15%"></Sider>
       </Layout>
-
-      <Footer style={footerStyle}>Footer</Footer>
+      <Divider className={styles.divider} />
+      <Footer className={styles.footer}>
+        Сделано с любовью как шоколад Nestlé
+      </Footer>
     </Layout>
   );
 };
