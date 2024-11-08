@@ -29,7 +29,6 @@ const ContentSite = () => {
           <Route path="/optimization" element={<Optimization />} />
           <Route path="/context" element={<Context />} />
           <Route path="/forms" element={<Forms />} />
-
         </Routes>
       </Content>
     </>

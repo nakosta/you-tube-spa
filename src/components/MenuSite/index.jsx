@@ -5,35 +5,46 @@ import { Menu } from "antd";
 const MenuSite = () => {
   return (
     <>
-      <Menu mode="inline">
-        <Menu.Item key="1">
-          <Link to="/components">Components</Link>
-        </Menu.Item>
-        <Menu.Item key="2">
-          <Link to="/props">Props</Link>
-        </Menu.Item>
-        <Menu.Item key="3">
-          <Link to="/state">State (useState)</Link>
-        </Menu.Item>
-        <Menu.Item key="4">
-          <Link to="/lifecycle">LifeCycle (useEffect)</Link>
-        </Menu.Item>
-        <Menu.Item key="5">
-          <Link to="/events">Events</Link>
-        </Menu.Item>
-        <Menu.Item key="6">
-          <Link to="/refs_fragment_key">Refs, Fragment, key</Link>
-        </Menu.Item>
-        <Menu.Item key="7">
-          <Link to="/optimization">React.memo, useMemo, UseCallback</Link>
-        </Menu.Item>
-        <Menu.Item key="8">
-          <Link to="/context">Context (useContext)</Link>
-        </Menu.Item>
-        <Menu.Item key="9">
-          <Link to="/forms">React Hook Form VS Formik</Link>
-        </Menu.Item>
-      </Menu>
+      <Menu mode="inline"
+        items={[
+          {
+            key: '1',
+            label: <Link to="/components">Components</Link>
+          },
+          {
+            key: '2',
+            label: <Link to="/props">Props</Link>
+          },
+          {
+            key: '3',
+            label: <Link to="/state">State (useState)</Link>
+          },
+          {
+            key: '4',
+            label: <Link to="/lifecycle">LifeCycle (useEffect)</Link>
+          },
+          {
+            key: '5',
+            label: <Link to="/events">Events</Link>
+          },
+          {
+            key: '6',
+            label: <Link to="/refs_fragment_key">Refs, Fragment, key</Link>
+          },
+          {
+            key: '7',
+            label: <Link to="/optimization">React.memo, useMemo, UseCallback</Link>
+          },
+          {
+            key: '8',
+            label: <Link to="/context">Context (useContext)</Link>
+          },
+          {
+            key: '9',
+            label: <Link to="/forms">React Hook Form VS Formik</Link>
+          }
+        ]}
+      />
     </>
   );
 };
