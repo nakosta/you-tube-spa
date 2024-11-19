@@ -1,28 +1,20 @@
-import { Layout, Divider } from "antd";
-import ContentSite from "./components/ContentSite";
-import HeaderSite from "./components/HeaderSite";
-import MenuSite from "./components/MenuSite";
+import React from "react";
+import TodoList from "./components/TodoList";
+import withLogger from "./components/withLogger";
 import styles from "./index.module.css";
+import { Typography } from "antd";
 
-const { Footer, Sider } = Layout;
+const { Title } = Typography;
 
-const App = () => {
+const LoggedTodoList = withLogger(TodoList)
+
+function App() {
   return (
-    <Layout className={styles.layout}>
-      <HeaderSite />
-      <Divider className={styles.divider} />
-      <Layout>
-        <Sider className={styles.sider} width="20%">
-          <MenuSite />
-        </Sider>
-        <ContentSite />
-        <Sider className={styles.sider} width="15%"></Sider>
-      </Layout>
-      <Divider className={styles.divider} />
-      <Footer className={styles.footer}>
-        Сделано с любовью как шоколад Nestlé
-      </Footer>
-    </Layout>
+    <>
+      <Title className={styles.title}>Get things done!</Title>
+      <LoggedTodoList />
+    </>
   );
-};
+}
+
 export default App;

@@ -1,0 +1,30 @@
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.space {
+  width: 100%;
+}
+
+.list {
+  margin-top: 20px;
+}
+
+.buttonUpdate {
+  border-radius: 5px;
+}
+
+.text {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.text:hover {
+  color: #1890ff;
+}
+
+.textCompleted {
+  text-decoration: line-through;
+}
