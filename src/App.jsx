@@ -13,10 +13,7 @@ const App = () => {
 
   return (
     <Routes>
-      <Route
-        path="/"
-        element={token ? <Navigate to="/todolist" /> : <Navigate to="/login" />}
-      />
+      <Route path="/" element={<Navigate to="/todolist" />} />
       <Route path="/register" element={<RegistrationForm />} />
       <Route path="/login" element={<LoginForm />} />
       <Route

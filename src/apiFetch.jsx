@@ -1,3 +1,5 @@
+const token = localStorage.getItem("authToken");
+
 export async function registration(order) {
   try {
     const response = await fetch(
@@ -44,7 +46,7 @@ export async function login(emailPassword) {
   }
 }
 
-export async function createTask(task, token) {
+export async function createTask(task) {
   try {
     const response = await fetch("https://todo-redev.herokuapp.com/api/todos", {
       method: "POST",
@@ -62,7 +64,7 @@ export async function createTask(task, token) {
   }
 }
 
-export async function getTasks(token) {
+export async function getTasks() {
   try {
     const response = await fetch("https://todo-redev.herokuapp.com/api/todos", {
       method: "GET",
@@ -78,7 +80,7 @@ export async function getTasks(token) {
   }
 }
 
-export async function editTask(task, id, token) {
+export async function editTask(task, id) {
   try {
     const response = await fetch(
       `https://todo-redev.herokuapp.com/api/todos/${id}`,
@@ -99,7 +101,7 @@ export async function editTask(task, id, token) {
   }
 }
 
-export async function isCompleted( id, token) {
+export async function isCompleted(id) {
   try {
     const response = await fetch(
       `https://todo-redev.herokuapp.com/api/todos/${id}/isCompleted`,
@@ -119,7 +121,7 @@ export async function isCompleted( id, token) {
   }
 }
 
-export async function deleteFetch(id, token) {
+export async function deleteFetch(id) {
   try {
     const response = await fetch(
       `https://todo-redev.herokuapp.com/api/todos/${id}`,

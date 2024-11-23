@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, List, Typography, Space } from "antd";
-import { FormOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
-import { getTasks, createTask, editTask, deleteFetch, isCompleted } from "../../api";
+import TaskInput from "../TaskInput";
+import TaskList from "../TaskList";
+import LogoutButton from "../LogoutButton";
+
+import {
+  getTasks,
+  createTask,
+  editTask,
+  deleteFetch,
+  isCompleted,
+} from "../../apiAxios";
 
 const TodoList = ({ logAction }) => {
-  const token = localStorage.getItem("authToken");
   const [tasks, setTasks] = useState([]); // Список задач
   const [newTask, setNewTask] = useState(""); // Для добавления новой задачи
   const [editingTask, setEditingTask] = useState(null); // Текущая редактируемая задача
@@ -16,21 +23,20 @@ const TodoList = ({ logAction }) => {
   useEffect(() => {
     const allTasks = async () => {
       try {
-        const data = await getTasks(token); // Получаем задачи с сервера
+        const data = await getTasks(); // Получаем задачи с сервера
         setTasks(data); // Устанавливаем задачи в состояние
       } catch (error) {
         console.error("Error getTasks:", error);
       }
     };
     allTasks();
-  }, [token]);
+  }, []);
 
   // Добавление новой задачи
   const addTask = async () => {
     if (newTask.trim()) {
       try {
-        const { id, title, isCompleted } = await createTask(newTask, token);
-        const task = { id, title, isCompleted };
+        const { user_id, ...task } = await createTask(newTask);
         setTasks([...tasks, task]);
         logAction("Добавлена задача", task);
         setNewTask("");
@@ -43,7 +49,7 @@ const TodoList = ({ logAction }) => {
   // Переключение состояния "выполнено"
   const toggleComplete = async (id) => {
     try {
-      const task = await isCompleted(id, token);
+      const task = await isCompleted(id);
       const updatedTasks = tasks.map((task) =>
         task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       );
@@ -67,7 +73,7 @@ const TodoList = ({ logAction }) => {
   // Сохранение изменений задачи
   const updateTask = async (id) => {
     try {
-      const task = await editTask(editingText, id, token);
+      const task = await editTask(editingText, id);
       const updatedTasks = tasks.map((task) =>
         task.id === id ? { ...task, title: editingText } : task
       );
@@ -83,7 +89,7 @@ const TodoList = ({ logAction }) => {
   // Удаление задачи
   const deleteTask = async (id) => {
     try {
-      const task = await deleteFetch(id, token);
+      const task = await deleteFetch(id);
       setTasks(tasks.filter((task) => task.id !== id));
       logAction("Удалена задача", task);
     } catch (error) {
@@ -100,83 +106,26 @@ const TodoList = ({ logAction }) => {
   return (
     <>
       <div className={styles.container}>
-        {/* Добавление новой задачи */}
-        <Space.Compact className={styles.space}>
-          <Input
-            placeholder="What is the task today?"
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            onPressEnter={addTask}
-          />
-          <Button type="primary" onClick={addTask}>
-            Add task
-          </Button>
-        </Space.Compact>
-
+        {/* Форма добавления задачи */}
+        <TaskInput
+          newTask={newTask}
+          setNewTask={setNewTask}
+          addTask={addTask}
+        />
         {/* Список задач */}
-        <List
-          className={styles.list}
-          bordered
-          dataSource={tasks}
-          renderItem={(item) => (
-            <List.Item
-              key={item.id}
-              actions={[
-                editingTask === item.id ? (
-                  <Button
-                    className={styles.buttonUpdate}
-                    type="primary"
-                    key="update"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      updateTask(item.id);
-                    }}
-                  >
-                    Update
-                  </Button>
-                ) : (
-                  <FormOutlined
-                    key="edit"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      startEditing(item.id);
-                    }}
-                  />
-                ),
-                <DeleteOutlined
-                  key="delete"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    deleteTask(item.id);
-                  }}
-                />,
-              ]}
-            >
-              {editingTask === item.id ? (
-                <Input
-                  value={editingText}
-                  onChange={(e) => setEditingText(e.target.value)}
-                  onPressEnter={() => updateTask(item.id)}
-                />
-              ) : (
-                <Typography.Text
-                  onClick={() => toggleComplete(item.id)}
-                  className={`${styles.text} ${
-                    item.isCompleted ? styles.textCompleted : ""
-                  }`}
-                >
-                  {item.title}
-                </Typography.Text>
-              )}
-            </List.Item>
-          )}
+        <TaskList
+          tasks={tasks}
+          editingTask={editingTask}
+          editingText={editingText}
+          toggleComplete={toggleComplete}
+          startEditing={startEditing}
+          updateTask={updateTask}
+          deleteTask={deleteTask}
+          setEditingText={setEditingText}
         />
       </div>
-      <div className={styles.buttonLogout}>
-        <Button type="primary" danger onClick={handleLogout}>
-          Log out
-        </Button>
-      </div>
+      {/* Кнопка выхода */}
+      <LogoutButton handleLogout={handleLogout} />
     </>
   );
 };
