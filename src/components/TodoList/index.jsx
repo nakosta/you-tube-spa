@@ -103,6 +103,16 @@ const TodoList = ({ logAction }) => {
     navigate("/login");
   };
 
+  const taskActions = {
+    toggleComplete,
+    startEditing,
+    updateTask,
+    deleteTask,
+    setEditingText,
+    editingTask,
+    editingText,
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -113,16 +123,7 @@ const TodoList = ({ logAction }) => {
           addTask={addTask}
         />
         {/* Список задач */}
-        <TaskList
-          tasks={tasks}
-          editingTask={editingTask}
-          editingText={editingText}
-          toggleComplete={toggleComplete}
-          startEditing={startEditing}
-          updateTask={updateTask}
-          deleteTask={deleteTask}
-          setEditingText={setEditingText}
-        />
+        <TaskList tasks={tasks} taskActions={taskActions} />
       </div>
       {/* Кнопка выхода */}
       <LogoutButton handleLogout={handleLogout} />
