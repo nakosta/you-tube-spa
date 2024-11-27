@@ -80,7 +80,7 @@ export async function isCompleted(id) {
   }
 }
 
-export async function deleteFetch(id) {
+export async function deleteAxios(id) {
   try {
     const { data } = await apiClient.delete(`/todos/${id}`);
     return data;

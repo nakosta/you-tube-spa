@@ -1,63 +1,37 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { axiosTasks, createNewTask, updateTaskById, deleteTaskById, toggleTask } from "../../redux/thunks/tasksThunks";
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 import TaskInput from "../TaskInput";
 import TaskList from "../TaskList";
 import LogoutButton from "../LogoutButton";
 
-import {
-  getTasks,
-  createTask,
-  editTask,
-  deleteFetch,
-  isCompleted,
-} from "../../apiAxios";
-
 const TodoList = ({ logAction }) => {
-  const [tasks, setTasks] = useState([]); // Список задач
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks.tasks); // Получаем задачи из Redux
   const [newTask, setNewTask] = useState(""); // Для добавления новой задачи
   const [editingTask, setEditingTask] = useState(null); // Текущая редактируемая задача
   const [editingText, setEditingText] = useState(""); // Текст редактируемой задачи
   const navigate = useNavigate();
 
   useEffect(() => {
-    const allTasks = async () => {
-      try {
-        const data = await getTasks(); // Получаем задачи с сервера
-        setTasks(data); // Устанавливаем задачи в состояние
-      } catch (error) {
-        console.error("Error getTasks:", error);
-      }
-    };
-    allTasks();
-  }, []);
+    dispatch(axiosTasks()); // Загружаем задачи при монтировании
+  }, [dispatch]);
 
   // Добавление новой задачи
-  const addTask = async () => {
+  const addTask = (newTask) => {
     if (newTask.trim()) {
-      try {
-        const { user_id, ...task } = await createTask(newTask);
-        setTasks([...tasks, task]);
-        logAction("Добавлена задача", task);
-        setNewTask("");
-      } catch (error) {
-        console.error("Error creating task:", error);
-      }
+      dispatch(createNewTask(newTask));
+      logAction("Добавлена задача", { title: newTask });
+      setNewTask("");
     }
   };
 
   // Переключение состояния "выполнено"
-  const toggleComplete = async (id) => {
-    try {
-      const task = await isCompleted(id);
-      const updatedTasks = tasks.map((task) =>
-        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
-      );
-      setTasks(updatedTasks);
-      logAction("Изменен статус задачи", task);
-    } catch (error) {
-      console.error("Error completeding task:", error);
-    }
+  const toggleComplete = (id) => {
+    dispatch(toggleTask(id));
+    logAction("Изменен статус задачи", { id });
   };
 
   // Начало редактирования
@@ -71,30 +45,17 @@ const TodoList = ({ logAction }) => {
   };
 
   // Сохранение изменений задачи
-  const updateTask = async (id) => {
-    try {
-      const task = await editTask(editingText, id);
-      const updatedTasks = tasks.map((task) =>
-        task.id === id ? { ...task, title: editingText } : task
-      );
-      setTasks(updatedTasks);
-      logAction("Обновлена задача", task);
-      setEditingTask(null);
-      setEditingText("");
-    } catch (error) {
-      console.error("Error updateding task:", error);
-    }
+  const updateTask = (id, editingText) => {
+    dispatch(updateTaskById(id, editingText));
+    logAction("Обновлена задача", { id, title: editingText });
+    setEditingTask(null);
+    setEditingText("");
   };
 
   // Удаление задачи
-  const deleteTask = async (id) => {
-    try {
-      const task = await deleteFetch(id);
-      setTasks(tasks.filter((task) => task.id !== id));
-      logAction("Удалена задача", task);
-    } catch (error) {
-      console.error("Error deleteing task:", error);
-    }
+  const deleteTask = (id) => {
+    dispatch(deleteTaskById(id));
+    logAction("Удалена задача", { id });
   };
 
   // Обработчик выхода

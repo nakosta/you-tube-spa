@@ -24,7 +24,7 @@ const TaskItem = ({ item, taskActions }) => {
             key="update"
             onClick={(e) => {
               e.stopPropagation();
-              updateTask(item.id);
+              updateTask(item.id, editingText);
             }}
           >
             Update
@@ -51,7 +51,7 @@ const TaskItem = ({ item, taskActions }) => {
         <Input
           value={editingText}
           onChange={(e) => setEditingText(e.target.value)}
-          onPressEnter={() => updateTask(item.id)}
+          onPressEnter={() => updateTask(item.id, editingText)}
         />
       ) : (
         <Typography.Text

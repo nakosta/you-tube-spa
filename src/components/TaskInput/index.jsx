@@ -7,9 +7,9 @@ const TaskInput = ({ newTask, setNewTask, addTask }) => (
       placeholder="What is the task today?"
       value={newTask}
       onChange={(e) => setNewTask(e.target.value)}
-      onPressEnter={addTask}
+      onPressEnter={() => addTask(newTask)}
     />
-    <Button type="primary" onClick={addTask}>
+    <Button type="primary" onClick={() => addTask(newTask)}>
       Add task
     </Button>
   </Space.Compact>
