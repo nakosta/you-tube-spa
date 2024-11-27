@@ -1,11 +1,11 @@
-const initialState = {
-  editingText: "",
-};
+const initialState = "";
 
 const editingTextReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_EDITING_TEXT":
-      return { ...state, editingText: action.payload };
+      return action.payload;
+    case "CLEAR_EDITING_TEXT":
+      return "";
     default:
       return state;
   }

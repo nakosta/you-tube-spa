@@ -1,18 +1,18 @@
 import { Input, Button, Space } from "antd";
 import { useSelector, useDispatch } from "react-redux";
+import { createNewTask } from "../../redux/thunks/tasksThunks";
 import { setNewTask } from "../../redux/actions/newTask";
 import styles from "./index.module.css";
 
-const TaskInput = ({ addTask }) => {
+const TaskInput = ({ logAction }) => {
   const dispatch = useDispatch();
   const newTask = useSelector((state) => state.newTask.newTask);
 
-  const handleInputChange = (e) => {
-    dispatch(setNewTask(e.target.value));
-  };
-
   const handleAddTask = () => {
-    addTask(newTask);
+    if (newTask.trim()) {
+      dispatch(createNewTask(newTask));
+      logAction("Добавлена задача", { title: newTask });
+    }
     dispatch(setNewTask(""));
   };
 
@@ -21,7 +21,9 @@ const TaskInput = ({ addTask }) => {
       <Input
         placeholder="What is the task today?"
         value={newTask}
-        onChange={handleInputChange}
+        onChange={(e) => {
+          dispatch(setNewTask(e.target.value));
+        }}
         onPressEnter={handleAddTask}
       />
       <Button type="primary" onClick={handleAddTask}>
