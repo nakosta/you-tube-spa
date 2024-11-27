@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { axiosTasks, createNewTask, updateTaskById, deleteTaskById, toggleTask } from "../../redux/thunks/tasksThunks";
+import {
+  axiosTasks,
+  createNewTask,
+  updateTaskById,
+  deleteTaskById,
+  toggleTask,
+} from "../../redux/thunks/tasksThunks";
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 import TaskInput from "../TaskInput";
@@ -9,14 +15,14 @@ import LogoutButton from "../LogoutButton";
 
 const TodoList = ({ logAction }) => {
   const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.tasks.tasks); // Получаем задачи из Redux
-  const [newTask, setNewTask] = useState(""); // Для добавления новой задачи
+  const tasks = useSelector((state) => state.tasks.tasks);
   const [editingTask, setEditingTask] = useState(null); // Текущая редактируемая задача
   const [editingText, setEditingText] = useState(""); // Текст редактируемой задачи
+  
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(axiosTasks()); // Загружаем задачи при монтировании
+    dispatch(axiosTasks());
   }, [dispatch]);
 
   // Добавление новой задачи
@@ -24,7 +30,6 @@ const TodoList = ({ logAction }) => {
     if (newTask.trim()) {
       dispatch(createNewTask(newTask));
       logAction("Добавлена задача", { title: newTask });
-      setNewTask("");
     }
   };
 
@@ -78,11 +83,7 @@ const TodoList = ({ logAction }) => {
     <>
       <div className={styles.container}>
         {/* Форма добавления задачи */}
-        <TaskInput
-          newTask={newTask}
-          setNewTask={setNewTask}
-          addTask={addTask}
-        />
+        <TaskInput addTask={addTask} />
         {/* Список задач */}
         <TaskList tasks={tasks} taskActions={taskActions} />
       </div>

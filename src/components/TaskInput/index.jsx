@@ -1,18 +1,34 @@
 import { Input, Button, Space } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { setNewTask } from "../../redux/actions/newTask";
 import styles from "./index.module.css";
 
-const TaskInput = ({ newTask, setNewTask, addTask }) => (
-  <Space.Compact className={styles.space}>
-    <Input
-      placeholder="What is the task today?"
-      value={newTask}
-      onChange={(e) => setNewTask(e.target.value)}
-      onPressEnter={() => addTask(newTask)}
-    />
-    <Button type="primary" onClick={() => addTask(newTask)}>
-      Add task
-    </Button>
-  </Space.Compact>
-);
+const TaskInput = ({ addTask }) => {
+  const dispatch = useDispatch();
+  const newTask = useSelector((state) => state.newTask.newTask);
 
-export default TaskInput
+  const handleInputChange = (e) => {
+    dispatch(setNewTask(e.target.value));
+  };
+
+  const handleAddTask = () => {
+    addTask(newTask);
+    dispatch(setNewTask(""));
+  };
+
+  return (
+    <Space.Compact className={styles.space}>
+      <Input
+        placeholder="What is the task today?"
+        value={newTask}
+        onChange={handleInputChange}
+        onPressEnter={handleAddTask}
+      />
+      <Button type="primary" onClick={handleAddTask}>
+        Add task
+      </Button>
+    </Space.Compact>
+  );
+};
+
+export default TaskInput;

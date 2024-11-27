@@ -9,8 +9,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 const LoggedTodoList = withLogger(TodoList);
 
 const App = () => {
-  const token = localStorage.getItem("authToken");
-
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/todolist" />} />
