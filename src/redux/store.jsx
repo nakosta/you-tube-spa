@@ -1,21 +1,16 @@
-import {
-  legacy_createStore as createStore,
-  combineReducers,
-  applyMiddleware,
-} from "redux";
-import { thunk } from "redux-thunk";
-import tasksReducer from "./reducers/tasksReducer";
-import newTaskReducer from "./reducers/newTaskReducer";
-import editingTextReducer from "./reducers/editingTextReducer";
-import editingTaskReducer from "./reducers/editingTaskReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import tasksReducer from "./slices/tasksSlice";
+import newTaskReducer from "./slices/newTaskSlice";
+import editingTextReducer from "./slices/editingTextSlice";
+import editingTaskReducer from "./slices/editingTaskSlice";
 
-const rootReducer = combineReducers({
-  tasks: tasksReducer,
-  newTask: newTaskReducer,
-  editingText: editingTextReducer,
-  editingTask: editingTaskReducer,
+const store = configureStore({
+  reducer: {
+    tasks: tasksReducer,
+    newTask: newTaskReducer,
+    editingText: editingTextReducer,
+    editingTask: editingTaskReducer,
+  },
 });
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;

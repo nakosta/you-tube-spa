@@ -6,20 +6,20 @@ import {
   updateTaskById,
   deleteTaskById,
   toggleTask,
-} from "../../redux/thunks/tasksThunks";
+} from "../../redux/slices/tasksSlice";
 import {
   setEditingText,
   clearEditingText,
-} from "../../redux/actions/editingText";
+} from "../../redux/slices/editingTextSlice";
 import {
   setEditingTask,
   clearEditingTask,
-} from "../../redux/actions/editingTask";
+} from "../../redux/slices/editingTaskSlice";
 
 const TaskItem = ({ item, logAction }) => {
   const dispatch = useDispatch();
-  const editingText = useSelector((state) => state.editingText);
-  const editingTask = useSelector((state) => state.editingTask);
+  const editingText = useSelector((state) => state.editingText.value);
+  const editingTask = useSelector((state) => state.editingTask.value);
 
   // Переключение состояния "выполнено"
   const toggleComplete = (id) => {
@@ -36,7 +36,7 @@ const TaskItem = ({ item, logAction }) => {
 
   // Сохранение изменений задачи
   const updateTask = (id) => {
-    dispatch(updateTaskById(id, editingText));
+    dispatch(updateTaskById({ id, updatedText: editingText }));
     dispatch(clearEditingTask());
     dispatch(clearEditingText());
     logAction("Обновлена задача", { id, title: editingText });

@@ -1,19 +1,19 @@
 import { Input, Button, Space } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { createNewTask } from "../../redux/thunks/tasksThunks";
-import { setNewTask } from "../../redux/actions/newTask";
+import { createNewTask } from "../../redux/slices/tasksSlice";
+import { setNewTask, clearNewTask } from "../../redux/slices/newTaskSlice";
 import styles from "./index.module.css";
 
 const TaskInput = ({ logAction }) => {
   const dispatch = useDispatch();
-  const newTask = useSelector((state) => state.newTask.newTask);
+  const newTask = useSelector((state) => state.newTask.value);
 
   const handleAddTask = () => {
     if (newTask.trim()) {
       dispatch(createNewTask(newTask));
       logAction("Добавлена задача", { title: newTask });
     }
-    dispatch(setNewTask(""));
+    dispatch(clearNewTask());
   };
 
   return (
