@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const editingTextSlice = createSlice({
-  name: "editingTask",
+  name: "editingText",
   initialState: {
     value: "",
   },
