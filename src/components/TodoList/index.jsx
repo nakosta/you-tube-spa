@@ -1,6 +1,7 @@
 import styles from "./index.module.css";
 import TaskInput from "../TaskInput";
 import TaskList from "../TaskList";
+import TaskStats from "../TaskStats";
 import LogoutButton from "../LogoutButton";
 import withLogger from "../withLogger";
 
@@ -16,6 +17,7 @@ const TodoList = () => (
     </div>
     {/* Кнопка выхода */}
     <LogoutButton />
+    <TaskStats />
   </>
 );
 
