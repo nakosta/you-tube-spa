@@ -1,0 +1,11 @@
+.card {
+  border: none;
+}
+
+.paragraph {
+  margin: 0 !important;
+}
+
+.image {
+  border-radius: 6px;
+}

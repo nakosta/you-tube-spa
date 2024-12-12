@@ -1,15 +1,23 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tasksReducer from "./slices/tasksSlice";
-import newTaskReducer from "./slices/newTaskSlice";
-import editingTextReducer from "./slices/editingTextSlice";
-import editingTaskReducer from "./slices/editingTaskSlice";
+import requestReducer from "./slices/requestSlice";
+import videosReducer from "./slices/videosSlice";
+import viewModeReducer from "./slices/viewModeSlice";
+import searchReducer from "./slices/searchSlice";
+import favouritesReducer from "./slices/favouritesSlice";
+import isModalOpenReducer from "./slices/isModalOpenSlice";
+import sliderValueReducer from "./slices/sliderValueSlice";
+import staticRequestReducer from "./slices/staticRequestSlice";
 
 const store = configureStore({
   reducer: {
-    tasks: tasksReducer,
-    newTask: newTaskReducer,
-    editingText: editingTextReducer,
-    editingTask: editingTaskReducer,
+    request: requestReducer,
+    videos: videosReducer,
+    viewMode: viewModeReducer,
+    search: searchReducer,
+    favourites: favouritesReducer,
+    isModalOpen: isModalOpenReducer,
+    sliderValue: sliderValueReducer,
+    staticRequest: staticRequestReducer,
   },
 });
 

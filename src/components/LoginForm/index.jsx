@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Button, Typography } from "antd";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./index.module.css";
-import { login } from "../../apiAxios";
+import { login } from "../../api";
 
 const { Title } = Typography;
 
@@ -15,7 +15,7 @@ const LoginForm = () => {
       const { token } = await login(values);
       if (token) {
         localStorage.setItem("authToken", token);
-        navigate("/todolist");
+        navigate("/");
       } else {
         console.error("There is no such user");
       }
@@ -27,7 +27,6 @@ const LoginForm = () => {
   return (
     <div className={styles.container}>
       <Form form={form} layout="vertical" onFinish={handleLogin}>
-        {/* Email */}
         <Form.Item
           label="Email"
           name="email"
@@ -39,7 +38,6 @@ const LoginForm = () => {
           <Input placeholder="Enter your email" />
         </Form.Item>
 
-        {/* Password */}
         <Form.Item
           label="Password"
           name="password"
@@ -48,7 +46,6 @@ const LoginForm = () => {
           <Input.Password placeholder="Enter your password" />
         </Form.Item>
 
-        {/* Submit Button */}
         <Form.Item>
           <Button type="primary" htmlType="submit" block>
             Log In

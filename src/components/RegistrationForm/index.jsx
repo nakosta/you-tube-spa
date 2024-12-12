@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, InputNumber, Button, Radio } from "antd";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./index.module.css";
-import { registration } from "../../apiAxios";
+import { registration } from "../../api";
 import { Typography } from "antd";
 
 const { Title } = Typography;

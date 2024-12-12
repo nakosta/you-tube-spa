@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.inputSearch {
+  margin-top: 30px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.heartOutlined {
+  color: #1677ff;
+  cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}

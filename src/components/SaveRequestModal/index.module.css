@@ -1,0 +1,35 @@
+.modalTitle {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.queryText {
+  display: block;
+  background-color: #f5f5f5;
+  padding: 4px 10px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+
+.maxResults {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider {
+  flex: 1;
+}
+
+.inputNumber {
+  width: 60px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

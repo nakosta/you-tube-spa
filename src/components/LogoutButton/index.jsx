@@ -1,6 +1,5 @@
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import styles from "./index.module.css";
 
 const LogoutButton = () => {
   const navigate = useNavigate();
@@ -10,11 +9,9 @@ const LogoutButton = () => {
     navigate("/login");
   };
   return (
-    <div className={styles.buttonLogout}>
-      <Button type="primary" danger onClick={handleLogout}>
-        Log out
-      </Button>
-    </div>
+    <Button type="primary" danger onClick={handleLogout}>
+      Выйти
+    </Button>
   );
 };
 
