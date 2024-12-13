@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import MainLayout from "./components/MainLayout";
-import SearchVideo from "./components/SearchVideo";
-import RegistrationForm from "./components/RegistrationForm";
-import LoginForm from "./components/LoginForm";
+import MainLayout from "./pages/MainLayout";
+import SearchVideo from "./pages/SearchVideo";
+import RegistrationForm from "./pages/RegistrationForm";
+import LoginForm from "./pages/LoginForm";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Favourites from "./components/Favourites";
+import Favourites from "./pages/Favourites";
 
 const App = () => {
   return (
@@ -20,8 +20,22 @@ const App = () => {
           </ProtectedRoute>
         }
       >
-        <Route index element={<SearchVideo />} />
-        <Route path="/favourites" element={<Favourites />} />
+        <Route
+          index
+          element={
+            <ProtectedRoute>
+              <SearchVideo />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/favourites"
+          element={
+            <ProtectedRoute>
+              <Favourites />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </Routes>
   );

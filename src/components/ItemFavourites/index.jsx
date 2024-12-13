@@ -11,7 +11,6 @@ import {
 import { setIsModalOpen } from "../../redux/slices/isModalOpenSlice";
 import { setRequest } from "../../redux/slices/requestSlice";
 import { setStaticRequest } from "../../redux/slices/staticRequestSlice";
-import { defaultSliderValue } from "../../redux/slices/sliderValueSlice";
 import styles from "./index.module.css";
 import SaveRequestModal from "../SaveRequestModal";
 
@@ -30,10 +29,12 @@ const ItemFavourites = ({ item }) => {
 
   const executeRequest = (id) => {
     const objectRequest = favourites.find((item) => item.id === id);
+    
+    console.log(objectRequest);
+    
     dispatch(fetchVideosThunk(objectRequest));
     dispatch(setRequest(objectRequest.query));
     dispatch(setStaticRequest(objectRequest.query));
-    dispatch(defaultSliderValue());
     dispatch(setSearch(true));
     navigate("/");
   };

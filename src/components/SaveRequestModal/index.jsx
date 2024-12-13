@@ -10,10 +10,7 @@ import {
   Typography,
 } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setSliderValue,
-  defaultSliderValue,
-} from "../../redux/slices/sliderValueSlice";
+import { setSliderValue } from "../../redux/slices/sliderValueSlice";
 import {
   saveRequest,
   clearEditRequest,
@@ -55,10 +52,9 @@ const SaveRequestModal = () => {
     };
 
     dispatch(saveRequest(newFavourite));
-    dispatch(defaultSliderValue());
-    dispatch(setIsModalOpen(false));
     dispatch(clearEditRequest());
     form.resetFields();
+    dispatch(setIsModalOpen(false));
   };
 
   return (

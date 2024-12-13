@@ -29,7 +29,7 @@ const SearchInput = () => {
   return (
     <>
       <div className={search ? "" : styles.container}>
-        <Title level={2}>Поиск видео ИЗМЕНЕНИЕ</Title>
+        <Title level={2}>Поиск видео</Title>
         <Search
           className={search ? "" : styles.inputSearch}
           placeholder="Введите запрос"

@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography } from "antd";
-import ListFavourites from "../ListFavourites";
+import ListFavourites from "../../components/ListFavourites";
 
 const Favourites = () => {
   return (

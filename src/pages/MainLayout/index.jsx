@@ -2,8 +2,8 @@ import React from "react";
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import styles from "./index.module.css";
-import LogoutButton from "../LogoutButton";
-import MenuSite from "../MenuSite";
+import LogoutButton from "../../components/LogoutButton";
+import MenuSite from "../../components/MenuSite";
 
 const { Header } = Layout;
 
