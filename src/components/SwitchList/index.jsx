@@ -4,13 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppstoreOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { setViewMode } from "../../redux/slices/viewModeSlice";
 import styles from "./index.module.css";
+import { selectTotalResults } from "../../redux/selectors/selectors.jsx";
+import { selectStaticRequest } from "../../redux/selectors/selectors.jsx";
+import { selectViewMode } from "../../redux/selectors/selectors.jsx";
 
 const { Title, Text } = Typography;
 
 const SwitchList = () => {
-  const viewMode = useSelector((state) => state.viewMode.value);
-  const totalResults = useSelector((state) => state.videos.totalResults);
-  const staticRequest = useSelector((state) => state.staticRequest.value);
+  const viewMode = useSelector(selectViewMode);
+  const totalResults = useSelector(selectTotalResults);
+  const staticRequest = useSelector(selectStaticRequest);
   const dispatch = useDispatch();
 
   return (

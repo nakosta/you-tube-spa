@@ -9,13 +9,15 @@ import { setStaticRequest } from "../../redux/slices/staticRequestSlice";
 import { HeartOutlined } from "@ant-design/icons";
 import SaveRequestModal from "../SaveRequestModal";
 import styles from "./index.module.css";
+import { selectRequest } from "../../redux/selectors/selectors.jsx";
+import { selectSearch } from "../../redux/selectors/selectors.jsx";
 
 const { Search } = Input;
 const { Title } = Typography;
 
 const SearchInput = () => {
-  const request = useSelector((state) => state.request.value);
-  const search = useSelector((state) => state.search.value);
+  const request = useSelector(selectRequest);
+  const search = useSelector(selectSearch);
   const dispatch = useDispatch();
 
   const onSearch = (value) => {

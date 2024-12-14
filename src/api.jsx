@@ -1,4 +1,5 @@
 import axios from "axios";
+import { defaultMaxResults } from "./utils/utils.jsx";
 
 const token = localStorage.getItem("authToken");
 
@@ -46,7 +47,7 @@ export async function fetchVideos({query, maxResults, order}) {
         part: "snippet",
         type: "video",
         q: query,
-        maxResults: maxResults || 12,
+        maxResults: maxResults || defaultMaxResults,
         order: order || null,
         key: API_KEY,
       },

@@ -13,13 +13,15 @@ import { setRequest } from "../../redux/slices/requestSlice";
 import { setStaticRequest } from "../../redux/slices/staticRequestSlice";
 import styles from "./index.module.css";
 import SaveRequestModal from "../SaveRequestModal";
+import { selectFavourites } from "../../redux/selectors/selectors.jsx";
 
 const { Text } = Typography;
+
 
 const ItemFavourites = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const favourites = useSelector((state) => state.favourites.items);
+  const favourites = useSelector(selectFavourites);
 
   const startEditRequest = (id) => {
     const objectRequest = favourites.find((item) => item.id === id);

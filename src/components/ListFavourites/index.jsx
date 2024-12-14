@@ -3,9 +3,11 @@ import { List } from "antd";
 import { useSelector } from "react-redux";
 import styles from "./index.module.css";
 import ItemFavourites from "../ItemFavourites";
+import { selectFavourites } from "../../redux/selectors/selectors.jsx";
+
 
 const ListFavourites = () => {
-  const favourites = useSelector((state) => state.favourites.items);
+  const favourites = useSelector(selectFavourites);
 
   return (
     <List

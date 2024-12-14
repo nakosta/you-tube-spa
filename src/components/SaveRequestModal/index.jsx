@@ -17,17 +17,23 @@ import {
 } from "../../redux/slices/favouritesSlice";
 import { setIsModalOpen } from "../../redux/slices/isModalOpenSlice";
 import styles from "./index.module.css";
+import { selectEditRequest } from "../../redux/selectors/selectors.jsx";
+import { selectIsModalOpen } from "../../redux/selectors/selectors.jsx";
+import { selectRequest } from "../../redux/selectors/selectors.jsx";
+import { selectSliderValue } from "../../redux/selectors/selectors.jsx";
+import { defaultMaxResults } from "../../utils/utils.jsx";
 
 const { Text } = Typography;
 const { Option } = Select;
 
+
 const SaveRequestModal = () => {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const request = useSelector((state) => state.request.value);
-  const isModalOpen = useSelector((state) => state.isModalOpen.value);
-  const sliderValue = useSelector((state) => state.sliderValue.value);
-  const editRequest = useSelector((state) => state.favourites.editRequest);
+  const request = useSelector(selectRequest);
+  const isModalOpen = useSelector(selectIsModalOpen);
+  const sliderValue = useSelector(selectSliderValue);
+  const editRequest = useSelector(selectEditRequest);
 
   // Инициализация формы
   useEffect(() => {
@@ -48,7 +54,7 @@ const SaveRequestModal = () => {
       query: editRequest ? values.query : request,
       title: values.title,
       order: values.order || null,
-      maxResults: values.maxResults || 12,
+      maxResults: values.maxResults || defaultMaxResults,
     };
 
     dispatch(saveRequest(newFavourite));
