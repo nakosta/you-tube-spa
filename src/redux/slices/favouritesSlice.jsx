@@ -1,23 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const loadFromLocalStorage = () => {
-  try {
-    const serializedState = localStorage.getItem("favourites");
-    return serializedState ? JSON.parse(serializedState) : [];
-  } catch (error) {
-    console.error("Не удалось загрузить favourites из localStorage:", error);
-    return [];
-  }
-};
-
-const saveToLocalStorage = (state) => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem("favourites", serializedState);
-  } catch (error) {
-    console.error("Не удалось сохранить favourites в localStorage:", error);
-  }
-};
+import {
+  loadFromLocalStorage,
+  saveToLocalStorage,
+} from "../../helpers/localStorageHelper.jsx";
 
 const favouritesSlice = createSlice({
   name: "favourites",

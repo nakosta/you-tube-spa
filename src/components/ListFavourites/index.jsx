@@ -1,9 +1,9 @@
 import React from "react";
-import { List } from "antd";
 import { useSelector } from "react-redux";
-import styles from "./index.module.css";
+import { List } from "antd";
 import ItemFavourites from "../ItemFavourites";
 import { selectFavourites } from "../../redux/selectors/selectors.jsx";
+import styles from "./index.module.css";
 
 const ListFavourites = () => {
   const favourites = useSelector(selectFavourites);

@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { List, Typography } from "antd";
 import { FormOutlined, DeleteOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import SaveRequestModal from "../SaveRequestModal";
 import { fetchVideosThunk } from "../../redux/slices/videosSlice";
 import { setSearch } from "../../redux/slices/searchSlice";
 import {
@@ -11,9 +12,8 @@ import {
 import { setIsModalOpen } from "../../redux/slices/isModalOpenSlice";
 import { setRequest } from "../../redux/slices/requestSlice";
 import { setStaticRequest } from "../../redux/slices/staticRequestSlice";
-import styles from "./index.module.css";
-import SaveRequestModal from "../SaveRequestModal";
 import { selectFavourites } from "../../redux/selectors/selectors.jsx";
+import styles from "./index.module.css";
 
 const { Text } = Typography;
 

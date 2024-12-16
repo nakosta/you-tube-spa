@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Modal,
   Form,
@@ -9,19 +10,18 @@ import {
   InputNumber,
   Typography,
 } from "antd";
-import { useDispatch, useSelector } from "react-redux";
 import { setSliderValue } from "../../redux/slices/sliderValueSlice";
 import {
   saveRequest,
   clearEditRequest,
 } from "../../redux/slices/favouritesSlice";
 import { setIsModalOpen } from "../../redux/slices/isModalOpenSlice";
-import styles from "./index.module.css";
 import { selectEditRequest } from "../../redux/selectors/selectors.jsx";
 import { selectIsModalOpen } from "../../redux/selectors/selectors.jsx";
 import { selectRequest } from "../../redux/selectors/selectors.jsx";
 import { selectSliderValue } from "../../redux/selectors/selectors.jsx";
 import { defaultMaxResults } from "../../utils/utils.jsx";
+import styles from "./index.module.css";
 
 const { Text } = Typography;
 const { Option } = Select;
@@ -34,7 +34,6 @@ const SaveRequestModal = () => {
   const sliderValue = useSelector(selectSliderValue);
   const editRequest = useSelector(selectEditRequest);
 
-  // Инициализация формы
   useEffect(() => {
     if (editRequest) {
       dispatch(setSliderValue(editRequest.maxResults));

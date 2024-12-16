@@ -1,5 +1,5 @@
 import axios from "axios";
-import { defaultMaxResults } from "./utils/utils.jsx";
+import { defaultMaxResults, errors } from "./utils/utils.jsx";
 
 const token = localStorage.getItem("authToken");
 
@@ -23,8 +23,11 @@ export async function registration(order) {
     const { data } = await apiClient.post("/users/register", order);
     return data;
   } catch (error) {
-    console.error("Registration error:", error.response?.data || error.message);
-    throw new Error(error.response?.data.message || "Registration failed");
+    console.error(
+      `${errors.registration}:`,
+      error.response?.data || error.message
+    );
+    throw new Error(error.response?.data.message || errors.registration);
   }
 }
 
@@ -33,8 +36,8 @@ export async function login(emailPassword) {
     const { data } = await apiClient.post("/auth/login", emailPassword);
     return data;
   } catch (error) {
-    console.error("Login error:", error.response?.data || error.message);
-    throw new Error(error.response?.data.message || "Login failed");
+    console.error(`${errors.login}:`, error.response?.data || error.message);
+    throw new Error(error.response?.data.message || errors.login);
   }
 }
 
@@ -75,17 +78,7 @@ export async function fetchVideos({ query, maxResults, order }) {
       totalResults: data.pageInfo.totalResults,
     };
   } catch (error) {
-    console.error("Fetch videos error:", error.message);
-    throw new Error("Failed to fetch videos.");
+    console.error(`${errors.fetchVideos}:`, error.message);
+    throw new Error(errors.fetchVideos);
   }
 }
-
-// "id": 723,
-// "username": "nakosta666",
-// "email": "nakosta666@mail.ru",
-// "password": "Qwerty12345$",
-// "gender": "male",
-// "age": 27
-
-// "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ha29zdGE2NjZAbWFpbC5ydSIsImlkIjo3MjMsImlhdCI6MTcxNzEzMTA4MX0.kly-kubaJsGpD6-rfWob5SMZiBGUx9IjCdqVa5bi1Mc"
-

@@ -1,12 +1,12 @@
 import React from "react";
-import { List } from "antd";
 import { useSelector } from "react-redux";
+import { List } from "antd";
+import ItemVideoGrid from "../ItemVideoGrid";
+import ItemVideoList from "../ItemVideoList";
 import {
   selectVideos,
   selectViewMode,
 } from "../../redux/selectors/selectors.jsx";
-import ItemVideoGrid from "../ItemVideoGrid";
-import ItemVideoList from "../ItemVideoList";
 
 const ListVideo = () => {
   const videos = useSelector(selectVideos);

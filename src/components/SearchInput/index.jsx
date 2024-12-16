@@ -1,16 +1,16 @@
 import React from "react";
-import { Input, Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import { Input, Typography } from "antd";
+import { HeartOutlined } from "@ant-design/icons";
+import SaveRequestModal from "../SaveRequestModal";
 import { setRequest } from "../../redux/slices/requestSlice";
 import { setSearch } from "../../redux/slices/searchSlice";
 import { fetchVideosThunk } from "../../redux/slices/videosSlice";
 import { setIsModalOpen } from "../../redux/slices/isModalOpenSlice";
 import { setStaticRequest } from "../../redux/slices/staticRequestSlice";
-import { HeartOutlined } from "@ant-design/icons";
-import SaveRequestModal from "../SaveRequestModal";
-import styles from "./index.module.css";
 import { selectRequest } from "../../redux/selectors/selectors.jsx";
 import { selectSearch } from "../../redux/selectors/selectors.jsx";
+import styles from "./index.module.css";
 
 const { Search } = Input;
 const { Title } = Typography;

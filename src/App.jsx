@@ -4,8 +4,8 @@ import MainLayout from "./pages/MainLayout";
 import SearchVideo from "./pages/SearchVideo";
 import RegistrationForm from "./pages/RegistrationForm";
 import LoginForm from "./pages/LoginForm";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Favourites from "./pages/Favourites";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, Input, Button, Typography } from "antd";
 import { useNavigate, Link } from "react-router-dom";
-import styles from "./index.module.css";
 import { login } from "../../api";
+import styles from "./index.module.css";
 
 const { Title } = Typography;
 

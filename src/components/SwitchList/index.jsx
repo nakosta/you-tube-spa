@@ -1,12 +1,12 @@
 import React from "react";
-import { Button, Space, Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import { Button, Space, Typography } from "antd";
 import { AppstoreOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { setViewMode } from "../../redux/slices/viewModeSlice";
-import styles from "./index.module.css";
 import { selectTotalResults } from "../../redux/selectors/selectors.jsx";
 import { selectStaticRequest } from "../../redux/selectors/selectors.jsx";
 import { selectViewMode } from "../../redux/selectors/selectors.jsx";
+import styles from "./index.module.css";
 
 const { Title, Text } = Typography;
 

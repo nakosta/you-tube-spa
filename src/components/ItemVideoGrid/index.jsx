@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Image, Space, Typography } from "antd";
-import styles from "./index.module.css";
 import { formatViews, timeSince } from "../../utils/utils.jsx";
+import styles from "./index.module.css";
 
 const { Text, Paragraph } = Typography;
 
