@@ -5,7 +5,6 @@ import styles from "./index.module.css";
 import ItemFavourites from "../ItemFavourites";
 import { selectFavourites } from "../../redux/selectors/selectors.jsx";
 
-
 const ListFavourites = () => {
   const favourites = useSelector(selectFavourites);
 

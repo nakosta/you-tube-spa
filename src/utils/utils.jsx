@@ -11,4 +11,4 @@ export const formatViews = (views) => {
 
 export const timeSince = (date) => moment(date).locale("ru").fromNow();
 
-export const defaultMaxResults = 8;
+export const defaultMaxResults = 12;

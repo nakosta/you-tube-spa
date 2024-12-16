@@ -6,7 +6,6 @@ import { formatViews, timeSince } from "../../utils/utils.jsx";
 const { Text, Paragraph } = Typography;
 
 const ItemVideoGrid = ({ video }) => {
-  
   return (
     <Card
       className={styles.card}

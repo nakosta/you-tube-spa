@@ -17,7 +17,6 @@ import { selectFavourites } from "../../redux/selectors/selectors.jsx";
 
 const { Text } = Typography;
 
-
 const ItemFavourites = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,9 +30,7 @@ const ItemFavourites = ({ item }) => {
 
   const executeRequest = (id) => {
     const objectRequest = favourites.find((item) => item.id === id);
-    
-    console.log(objectRequest);
-    
+
     dispatch(fetchVideosThunk(objectRequest));
     dispatch(setRequest(objectRequest.query));
     dispatch(setStaticRequest(objectRequest.query));

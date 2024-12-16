@@ -5,7 +5,10 @@ import SearchInput from "../../components/SearchInput";
 import SwitchList from "../../components/SwitchList";
 import ListVideo from "../../components/ListVideo";
 import SpinLoading from "../../components/SpinLoading";
-import { selectIsLoading, selectError } from "../../redux/selectors/selectors.jsx";
+import {
+  selectIsLoading,
+  selectError,
+} from "../../redux/selectors/selectors.jsx";
 import { selectSearch } from "../../redux/selectors/selectors.jsx";
 
 const SearchVideo = () => {

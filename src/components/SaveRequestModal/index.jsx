@@ -26,7 +26,6 @@ import { defaultMaxResults } from "../../utils/utils.jsx";
 const { Text } = Typography;
 const { Option } = Select;
 
-
 const SaveRequestModal = () => {
   const dispatch = useDispatch();
   const [form] = Form.useForm();

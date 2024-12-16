@@ -23,7 +23,7 @@ const favouritesSlice = createSlice({
   name: "favourites",
   initialState: {
     items: loadFromLocalStorage(),
-    editRequest: null, // Состояние для редактируемого запроса
+    editRequest: null,
   },
   reducers: {
     saveRequest: (state, action) => {
@@ -31,9 +31,9 @@ const favouritesSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       if (existingIndex !== -1) {
-        state.items[existingIndex] = action.payload; // Обновление запроса
+        state.items[existingIndex] = action.payload;
       } else {
-        state.items.push(action.payload); // Добавление нового запроса
+        state.items.push(action.payload);
       }
       saveToLocalStorage(state.items);
     },

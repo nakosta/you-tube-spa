@@ -53,6 +53,8 @@ export async function fetchVideos({query, maxResults, order}) {
       },
     });
 
+    console.log(data);
+
     const videoIds = data.items.map((item) => item.id.videoId).join(",");
 
     const videoDetails = await axios.get(`${BASE_URL}/videos`, {
